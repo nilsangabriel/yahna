@@ -32,7 +32,10 @@
 - [Acknowledgments](#acknowledgement)
 
 ## 🧐 About <a name = "about"></a>
-Write about 1-2 paragraphs describing the purpose of your project.
+YAHNA is a hobby project that I made because it's about time that I build my own software that I'll actually use
+instead of just building portfolio projects that I built one time and never use it at all. Therefore I built YAHNA,
+with the pirpose of browsing the latest stories from the "Hacker News" on my phone, eventually
+doom scrolling through out the day but in an educational way. And I also want to learn react native out of curiousity, in which this project allowed me the oppurtunity to learn the framework.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
@@ -91,9 +94,9 @@ Add additional notes about how to deploy this on a live system.
 - [NodeJs](https://nodejs.org/en/) - Server Environment
 
 ## ✍️ Authors <a name = "authors"></a>
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
+- [@nilsangabriel](https://github.com/nilsangabriel)
 
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/nilsangabriel/yahna/contributors) who participated in this project.
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 - Hat tip to anyone whose code was used
