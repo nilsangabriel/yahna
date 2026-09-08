@@ -1,12 +1,15 @@
 import { useCallback, useEffect, useState } from "react";
-import { View, Text, FlatList, ActivityIndicator, Linking } from "react-native";
+import { View, Text, FlatList, ActivityIndicator, Linking, TouchableOpacity } from "react-native";
 import { getStories, fetchTopStories } from "@/app/api/hn-api";
+import { TimeAgo } from "@/utils/time-ago";
+import Lucide from "@react-native-vector-icons/lucide";
 
 type StoryType = {
   id: number;
   title: string;
   by: string;
   url: string;
+  time: number
 }
 
 const page_size = 20;
@@ -79,14 +82,24 @@ export default function NewsStory() {
       renderItem={({item}) => (
         <View className="my-2">
           <View className="px-3 py-2 gap-2">
-            <Text
-              className="font-bold text-blue-500"
+            <TouchableOpacity
               onPress={() => Linking.openURL(item.url)}
             >
-              {item.title}
-            </Text>
-            <Text>{item.by}</Text>
+              {/* Title */}
+              <Text className="font-bold text-lg text-blue-500">
+                {item.title}
+              </Text>
+              {/* Author and time */}
+              <View className="mt-1 flex-row items-center">
+                <Text>{item.by}</Text>
+                <Text>
+                  <Lucide name="dot" size={30}/>
+                </Text>
+                <Text className="text-sm">{TimeAgo(item.time)}</Text>
+              </View>
+            </TouchableOpacity>
           </View>
+          {/* Line separator */}
           <View className="w-full bg-black h-[0.45px]"/>
         </View>
       )}
