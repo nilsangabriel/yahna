@@ -26,10 +26,12 @@ export async function getItem(storyId: number) {
   return response.json();
 }
 
-export async function getStories(limit: number = 20) {
-  const ids = await fetchTopStories();
-  const batch = ids.slice(0, limit);
+// Paginate the top 100 stories
+export async function getStories(ids: number[], startingIndex: number, limit: number = 20) {
+  const pageIds = ids.slice(startingIndex, startingIndex + limit);
 
   // Using Promise to request in parallel, making it faster to fetch stories.
-  return Promise.all(batch.map(getItem));
+  const stories = await Promise.all(pageIds.map(getItem));
+
+  return stories.filter(Boolean);
 }
