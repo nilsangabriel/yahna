@@ -3,14 +3,8 @@ import { View, Text, FlatList, ActivityIndicator, Linking, TouchableOpacity } fr
 import { getStories, fetchTopStories } from "@/app/api/hn-api";
 import { TimeAgo } from "@/utils/time-ago";
 import Lucide from "@react-native-vector-icons/lucide";
-
-type StoryType = {
-  id: number;
-  title: string;
-  by: string;
-  url: string;
-  time: number
-}
+import Bookmark from "./bookmark";
+import { StoryType } from "@/constants/types";
 
 const page_size = 20;
 
@@ -23,6 +17,7 @@ export default function NewsStory() {
   const [cursor, setCursor] = useState(0);
   const [loadingMore, setLoadingMore] = useState(false);
 
+  // Load stories from api
   useEffect(() => {
     let isMounted = true;
 
@@ -52,6 +47,7 @@ export default function NewsStory() {
     return () => { isMounted = false; };
   }, [])
 
+  // Load more if cursor is almost at page limit
   const loadMore = useCallback(async () => {
     if (loadingMore || cursor >= allIds.length)
       return;
@@ -81,7 +77,7 @@ export default function NewsStory() {
       keyExtractor={(item) => item.id.toString()}
       renderItem={({item}) => (
         <View className="my-2">
-          <View className="px-3 py-2 gap-2">
+          <View className="px-3 py-2">
             <TouchableOpacity
               onPress={() => Linking.openURL(item.url)}
             >
@@ -89,13 +85,19 @@ export default function NewsStory() {
               <Text className="font-bold text-lg text-blue-500">
                 {item.title}
               </Text>
-              {/* Author and time */}
-              <View className="mt-1 flex-row items-center">
-                <Text>{item.by}</Text>
-                <Text>
-                  <Lucide name="dot" size={30}/>
-                </Text>
-                <Text className="text-sm">{TimeAgo(item.time)}</Text>
+              <View className="mt-1 flex-row items-center justify-between">
+                {/* Author and time */}
+                <View className="flex-row items-center">
+                  <Text>{item.by}</Text>
+                  <Text>
+                    <Lucide name="dot" size={30} />
+                  </Text>
+                  <Text className="text-sm">{TimeAgo(item.time)}</Text>
+                </View>
+                {/* Bookmark */}
+                <View className="justify-end">
+                  <Bookmark story={item} />
+                </View>
               </View>
             </TouchableOpacity>
           </View>

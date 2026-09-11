@@ -1,17 +1,15 @@
 import { Tabs } from "expo-router";
 import {Image, View} from "react-native";
-import {clsx} from "clsx";
 import {useSafeAreaInsets} from "react-native-safe-area-context";
 import {tabs} from "@/constants/data";
 import {components, colors} from "@/constants/theme";
 
+import Lucide from "@react-native-vector-icons/lucide";
 
 function TabIcon({icon}: TabIconProps) {
     return (
         <View className="tabs-icon">
-            <View>
-                <Image source={icon} resizeMode="contain" className="tabs-glyph" />
-            </View>
+        <Lucide name={icon} size={25} className="tabs-glyph" />
         </View>
     )
 }
@@ -20,7 +18,7 @@ export default function TabsLayout() {
     const insets = useSafeAreaInsets();
     const tabBar = components.tabBar;
 
-    return (
+  return (
         <Tabs
             screenOptions={{
                 headerShown: false,

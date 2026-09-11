@@ -4,11 +4,11 @@ declare global {
     interface AppTab {
         name: string;
         title: string;
-        icon: ImageSourcePropType;
+        icon: string;
     }
 
     interface TabIconProps {
         focused: boolean;
-        icon: ImageSourcePropType;
+        icon: any;
     }
 }

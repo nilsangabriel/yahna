@@ -1,6 +1,6 @@
-import { Image, TouchableOpacity, View } from "react-native";
-import searchIcon from "@/assets/images/appIcons/search.png"
+import { Pressable, View } from "react-native";
 import { useRouter } from "expo-router";
+import SearchIcon from "@react-native-vector-icons/lucide";
 
 export default function Search() {
   const router = useRouter();
@@ -10,12 +10,12 @@ export default function Search() {
   }
 
   return (
-    <View className="p-4">
-      <TouchableOpacity
+    <View className="px-4">
+      <Pressable
         onPress={onPress}
       >
-        <Image source={searchIcon} className="w-6 h-6"/>
-      </TouchableOpacity>
+        <SearchIcon name="search" size={20}/>
+      </Pressable>
     </View>
   )
 }
