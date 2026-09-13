@@ -1,10 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
-import { View, Text, FlatList, ActivityIndicator, Linking, TouchableOpacity } from "react-native";
+import { Text, ActivityIndicator } from "react-native";
 import { getStories, fetchTopStories } from "@/app/api/hn-api";
-import { TimeAgo } from "@/utils/time-ago";
-import Lucide from "@react-native-vector-icons/lucide";
-import BookmarkBtn from "../ui/bookmark-btn";
 import { StoryType } from "@/constants/types";
+import StoryList from "../ui/storylist";
 
 const page_size = 20;
 
@@ -71,45 +69,10 @@ export default function NewsStory() {
   if (error && stories.length == 0)
     return <Text className="flex-1 items-center justify-center">Error: {error}</Text>;
 
-  return (
-    <FlatList
-      data={stories}
-      keyExtractor={(item) => item.id.toString()}
-      renderItem={({item}) => (
-        <View className="my-2">
-          <View className="px-3 py-2">
-            <View className="flex-row items-center justify-between">
-              <TouchableOpacity
-                onPress={() => Linking.openURL(item.url)}
-              >
-                {/* Title */}
-                <Text className="font-bold text-lg text-blue-500">
-                  {item.title}
-                </Text>
-                <View className="mt-1 flex-row items-center">
-                  {/* Author and time */}
-                  <View className="flex-row items-center">
-                    <Text>{item.by}</Text>
-                    <Text>
-                      <Lucide name="dot" size={30} />
-                    </Text>
-                    <Text className="text-sm">{TimeAgo(item.time)}</Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-              {/* Bookmark */}
-              <View className="justify-end">
-                <BookmarkBtn story={item} />
-              </View>
-            </View>
-          </View>
-          {/* Line separator */}
-          <View className="w-full bg-black h-[0.45px]"/>
-        </View>
-      )}
-      onEndReached={loadMore}
-      onEndReachedThreshold={0.5}
-      ListFooterComponent={loadingMore ? <ActivityIndicator className="m-16" /> : null}
-    />
-  )
+  return <StoryList list={stories} config={{
+    onEndReached: loadMore,
+    onEndReachedThreshold: 0.5,
+    ListFooterComponent: loadingMore ? <ActivityIndicator className="m-16" /> : null
+  }}/>
+
 }
