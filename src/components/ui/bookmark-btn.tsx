@@ -3,7 +3,7 @@ import Lucide from "@react-native-vector-icons/lucide";
 import { useBookmarkContext } from "@/context/bookmark-context";
 import { StoryType } from "@/constants/types";
 
-export default function Bookmark({ story }: {story: StoryType}) {
+export default function BookmarkBtn({ story }: {story: StoryType}) {
   const { bookmarks, toggleBookmark } = useBookmarkContext();
 
   return (

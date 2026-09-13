@@ -3,7 +3,7 @@ import { View, Text, FlatList, ActivityIndicator, Linking, TouchableOpacity } fr
 import { getStories, fetchTopStories } from "@/app/api/hn-api";
 import { TimeAgo } from "@/utils/time-ago";
 import Lucide from "@react-native-vector-icons/lucide";
-import Bookmark from "./bookmark";
+import BookmarkBtn from "../ui/bookmark-btn";
 import { StoryType } from "@/constants/types";
 
 const page_size = 20;
@@ -78,28 +78,30 @@ export default function NewsStory() {
       renderItem={({item}) => (
         <View className="my-2">
           <View className="px-3 py-2">
-            <TouchableOpacity
-              onPress={() => Linking.openURL(item.url)}
-            >
-              {/* Title */}
-              <Text className="font-bold text-lg text-blue-500">
-                {item.title}
-              </Text>
-              <View className="mt-1 flex-row items-center justify-between">
-                {/* Author and time */}
-                <View className="flex-row items-center">
-                  <Text>{item.by}</Text>
-                  <Text>
-                    <Lucide name="dot" size={30} />
-                  </Text>
-                  <Text className="text-sm">{TimeAgo(item.time)}</Text>
+            <View className="flex-row items-center justify-between">
+              <TouchableOpacity
+                onPress={() => Linking.openURL(item.url)}
+              >
+                {/* Title */}
+                <Text className="font-bold text-lg text-blue-500">
+                  {item.title}
+                </Text>
+                <View className="mt-1 flex-row items-center">
+                  {/* Author and time */}
+                  <View className="flex-row items-center">
+                    <Text>{item.by}</Text>
+                    <Text>
+                      <Lucide name="dot" size={30} />
+                    </Text>
+                    <Text className="text-sm">{TimeAgo(item.time)}</Text>
+                  </View>
                 </View>
-                {/* Bookmark */}
-                <View className="justify-end">
-                  <Bookmark story={item} />
-                </View>
+              </TouchableOpacity>
+              {/* Bookmark */}
+              <View className="justify-end">
+                <BookmarkBtn story={item} />
               </View>
-            </TouchableOpacity>
+            </View>
           </View>
           {/* Line separator */}
           <View className="w-full bg-black h-[0.45px]"/>

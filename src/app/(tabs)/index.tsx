@@ -1,8 +1,8 @@
 import "@/app/global.css";
-import Search from "@/components/search";
+import Search from "@/components/ui/search";
 import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import NewsStory from "@/components/news-story";
+import NewsStory from "@/components/layout/news-story";
 
 export default function Home() {
   return (
