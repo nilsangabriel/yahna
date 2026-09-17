@@ -19,7 +19,7 @@ export default function SearchArea() {
       return;
     }
 
-    // Call getQuery(query) here, and store results in some state
+    // Call fetchQuery() and store to results, add timer 
     const timeOutId = setTimeout(async () => {
       const res = await fetchQuery(query);
       setResults(res);
@@ -32,10 +32,10 @@ export default function SearchArea() {
   }, [query])
 
   return (
-    <View>
+    <View className="flex-1">
       {/* Search header */}
-      <SafeAreaView className="px-4">
-        <View className="flex-row items-center gap-2">
+      <SafeAreaView className="my-2">
+        <View className="flex-row items-center gap-2 px-6">
           <Pressable
             onPress={() => router.back()}
           >

@@ -9,7 +9,7 @@ export default function Home() {
     <View className="flex-1 bg-gray-100">
       {/* Header */}
       <SafeAreaView className="bg-[#312c93] border-b border-gray-300 border-s-slate-500">
-        <View className="flex-row items-center justify-between px-4 mt-2">
+        <View className="flex-row items-center justify-between px-4 my-2">
           <Text className="text-lg font-semibold text-white">Yet Another Hacker News Again</Text>
           <Search/>
         </View>
