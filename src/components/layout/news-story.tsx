@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Text, ActivityIndicator } from "react-native";
-import { getStories, fetchTopStories } from "@/app/api/hn-api";
+import { getStories, fetchTopStories } from "@/app/api/hn-topstories";
 import { StoryType } from "@/constants/types";
 import StoryList from "../ui/storylist";
 
