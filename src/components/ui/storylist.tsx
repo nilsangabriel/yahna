@@ -3,6 +3,7 @@ import { FlatList, View, Text, TouchableOpacity, Linking, FlatListProps } from "
 import BookmarkBtn from "./bookmark-btn";
 import Lucide from "@react-native-vector-icons/lucide";
 import { TimeAgo } from "@/utils/time-ago";
+import { useHistoryContext } from "@/context/history-context";
 
 type StoryListProps = {
   list: StoryType[];
@@ -10,6 +11,8 @@ type StoryListProps = {
 }
 
 export default function StoryList({ list, config }: StoryListProps) {
+  const { recordView } = useHistoryContext();
+  
   return (
     <FlatList
       data={list}
@@ -18,7 +21,10 @@ export default function StoryList({ list, config }: StoryListProps) {
         <View className="my-2">
           <View className="px-3 py-2">
             <TouchableOpacity
-              onPress={() => Linking.openURL(item.url)}
+              onPress={() => {
+                Linking.openURL(item.url);
+                recordView(item);
+              }}
               className="w-full"
             >
               {/* Title */}
