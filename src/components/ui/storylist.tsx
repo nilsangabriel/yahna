@@ -28,18 +28,18 @@ export default function StoryList({ list, config }: StoryListProps) {
               className="w-full"
             >
               {/* Title */}
-              <Text className="font-bold text-lg text-blue-500">
+              <Text className="font-bold text-lg text-gray-200">
                 {item.title}
               </Text>
             </TouchableOpacity>
               <View className="mt-1 flex-row items-center justify-between">
                 {/* Author and time */}
                 <View className="flex-row items-center">
-                  <Text>{item.by}</Text>
+                  <Text className="text-gray-500">{item.by}</Text>
                   <Text>
-                    <Lucide name="dot" size={30} />
+                    <Lucide name="dot" size={30} color="#6b7280"/>
                   </Text>
-                  <Text className="text-sm">{TimeAgo(item.time)}</Text>
+                  <Text className="text-sm text-gray-500">{TimeAgo(item.time)}</Text>
                 </View>
                 {/* Bookmark */}
                 <View className="justify-end">
@@ -47,8 +47,6 @@ export default function StoryList({ list, config }: StoryListProps) {
                 </View>
               </View>
           </View>
-          {/* Line separator */}
-          <View className="w-full bg-black h-[0.45px]"/>
         </View>
       )}
       {...config}

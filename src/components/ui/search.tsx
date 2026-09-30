@@ -10,12 +10,10 @@ export default function Search() {
   }
 
   return (
-    <View className="px-4">
-      <Pressable
-        onPress={onPress}
-      >
-        <SearchIcon name="search" size={20}/>
-      </Pressable>
-    </View>
+    <Pressable
+      onPress={onPress}
+    >
+      <SearchIcon name="search" size={20} color="white"/>
+    </Pressable>
   )
 }

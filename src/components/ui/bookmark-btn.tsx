@@ -8,7 +8,9 @@ export default function BookmarkBtn({ story }: {story: StoryType}) {
 
   return (
     <Pressable onPress={() => toggleBookmark({...story}) } className="p-2">
-        <Lucide name={(story.id in bookmarks) ? "bookmark-check" : "bookmark-plus"} size={22} />
+        <Lucide name={(story.id in bookmarks) ? "bookmark-check" : "bookmark-plus"} 
+          size={22} 
+          color="#e5e7eb" />
     </Pressable>
   )
 }

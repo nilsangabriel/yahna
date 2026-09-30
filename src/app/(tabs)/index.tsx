@@ -6,9 +6,9 @@ import NewsStory from "@/components/layout/news-story";
 
 export default function Home() {
   return (
-    <View className="flex-1 bg-gray-100">
+    <View className="flex-1 bg-gray-800">
       {/* Header */}
-      <SafeAreaView className="bg-[#312c93] border-b border-gray-300 border-s-slate-500">
+      <SafeAreaView className="bg-orange-500 border-b border-gray-700 border-s-slate-500">
         <View className="flex-row items-center justify-between px-4 my-2">
           <Text className="text-lg font-semibold text-white">Yet Another Hacker News Again</Text>
           <Search/>
