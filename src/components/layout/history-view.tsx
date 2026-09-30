@@ -17,12 +17,14 @@ export default function HistoryView() {
 
     return (
         <View className="mt-3 mb-2 mx-3">
-            <View className="items-end">
-                <Button
-                    title="Clear history"
-                    onPress={clearHistory}
-                />
-            </View>
+            <TouchableOpacity
+                onPress={clearHistory}
+                className="w-full p-3 rounded-lg bg-gray-900"
+            >
+                <Text className="text-sm text-white text-center">
+                    Clear History
+                </Text>
+            </TouchableOpacity>
             <FlatList
                 data={history}
                 keyExtractor={(item) => item.timestamp.toString()}
