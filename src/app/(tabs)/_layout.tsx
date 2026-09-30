@@ -9,7 +9,7 @@ import Lucide from "@react-native-vector-icons/lucide";
 function TabIcon({icon}: TabIconProps) {
     return (
         <View className="tabs-icon">
-        <Lucide name={icon} size={25} className="tabs-glyph" />
+            <Lucide name={icon} size={25} color="white"/>
         </View>
     )
 }
@@ -23,6 +23,8 @@ export default function TabsLayout() {
             screenOptions={{
                 headerShown: false,
                 tabBarShowLabel: true,
+                tabBarActiveTintColor: "#fff",
+                tabBarInactiveTintColor: "#6b7280",
                 tabBarStyle: {
                     position: "absolute",
                     bottom: Math.max(insets.bottom, tabBar.horizontalInset),
