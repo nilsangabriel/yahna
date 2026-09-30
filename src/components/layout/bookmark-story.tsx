@@ -1,5 +1,5 @@
 import { useBookmarkContext } from "@/context/bookmark-context";
-import { FlatList, Text } from "react-native";
+import { View, Text } from "react-native";
 import StoryList from "../ui/storylist";
 
 export default function BookmarkStory() {
@@ -7,16 +7,11 @@ export default function BookmarkStory() {
   const stories = Object.values(bookmarks);
 
   if (stories.length === 0)
-    return 
-      <FlatList
-        data={stories}
-        ListEmptyComponent={
-          <Text className="flex-1 items-center justify-center">No Bookmarks yet. Add one!</Text>
-        }
-        renderItem={null}
-      >
-        No Bookmarked stories
-      </FlatList>;
+    return (
+      <View className="flex-1 items-center justify-center">
+        <Text className="mt-2 text-sm text-white">No Bookmarks yet. Add one!</Text>
+      </View>
+  )
 
   return <StoryList list={stories} />
 }
